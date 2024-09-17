@@ -22,6 +22,7 @@ import com.praveen.repository.UserRepository;
 import com.praveen.request.LoginRequest;
 import com.praveen.response.AuthResponse;
 import com.praveen.service.CustomUserDetailsImpl;
+import com.praveen.service.SubscriptionService;
 
 @RestController
 @RequestMapping("/auth")
@@ -35,6 +36,8 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsImpl customUserDetails;
 
+    @Autowired
+    private SubscriptionService subscriptionService;
 
     @PostMapping("/signup")
     public ResponseEntity<AuthResponse>createUserHandler(@RequestBody User user) throws Exception{
@@ -51,6 +54,8 @@ public class AuthController {
 
         User savedUser = userRepository.save(createdUser);
 
+        subscriptionService.createSubscription(savedUser);
+        
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(user.getEmail(), user.getPassword());
         SecurityContextHolder.getContext().setAuthentication(authentication);
 

@@ -32,8 +32,8 @@ public class AppConfig {
                 .anyRequest().permitAll())
             .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
             .csrf(csrf -> csrf.disable())
-            .cors(cors -> cors.configurationSource(corsConfigurationSource()))
-            .formLogin(form -> form.disable());
+            .cors(cors -> cors.configurationSource(corsConfigurationSource()));
+            // .formLogin(form -> form.disable());
         
         return http.build();
     }
