@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -36,6 +37,7 @@ public class Issue {
     @ManyToOne
     private User assignee;
 
+    @JsonBackReference
     @ManyToOne
     private Project project;
 

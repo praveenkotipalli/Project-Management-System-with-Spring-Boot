@@ -40,7 +40,7 @@ public class IssueServiceImpl implements IssueService{
 
     @Override
     public Issue creatIssue(IssueRequest issueRequest, User user) throws Exception {
-        Project project = projectService.getProjectById(issueRequest.getProjectID());
+        Project project = projectService.getProjectById(issueRequest.getProjectId());
 
         Issue issue = new Issue();
         issue.setTitle(issueRequest.getTitle());
