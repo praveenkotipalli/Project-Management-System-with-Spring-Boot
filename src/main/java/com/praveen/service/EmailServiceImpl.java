@@ -23,12 +23,14 @@ public class EmailServiceImpl  implements EmailService{
         String text = "Click the link to join the project team " + link;
 
         helper.setSubject(subject);
-        helper.setText(text);
+        helper.setText(text, true);
         helper.setTo(userEmail);
+        helper.setFrom("praveenin321@gmail.com");
 
         try{
             javaMailSender.send(mimeMessage);
         }catch(MailSendException e){
+            // e.printStackTrace();
             throw new MailSendException("Failed to send the mail");
         }
     }

@@ -130,14 +130,16 @@ public class ProjectController {
 
        return new ResponseEntity<>(chat, HttpStatus.OK);
     }
+
     @PostMapping("/invite")
     public ResponseEntity<MessageResponse>inviteProject(
         @RequestBody InviteRequest req,
-        @RequestHeader("Authorization") String jwt,
-        @RequestBody Project project
+        @RequestHeader("Authorization") String jwt
+        // @RequestBody Project project
     )throws Exception{
 
         User user = userService.findUserProfileByJwt(jwt);
+        // Project creaedProject = projectService.createProject(project, user);
         invitationService.sendInvitaion(req.getEmail(), req.getProjectId());
         MessageResponse res = new MessageResponse("User invitation sent");
 

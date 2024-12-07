@@ -10,6 +10,8 @@ import com.praveen.repository.InvitationRepository;
 
 import jakarta.mail.MessagingException;
 
+// import jakarta.mail.MessagingException;
+
 @Service
 public class InvitationServiceImpl implements InvitationService {
 
@@ -20,7 +22,8 @@ public class InvitationServiceImpl implements InvitationService {
     private EmailService emailService;
 
     @Override
-    public void sendInvitaion(String email, Long projectId) throws MessagingException {
+    public void sendInvitaion(String email, Long projectId){
+        try {
         String invitationToken = UUID.randomUUID().toString();
 
         Invitation invitation = new Invitation();
@@ -30,8 +33,11 @@ public class InvitationServiceImpl implements InvitationService {
 
         invitationRepository.save(invitation);
 
-        String invitationLink = "http://localhost:5173/accept_invitation?token"  + invitationToken;
+        String invitationLink = "http://localhost:5173/accept_invitation?token=" + invitationToken;
         emailService.sendEmailWithToken(email, invitationLink);
+    } catch (MessagingException e) {
+        throw new RuntimeException("Failed to send invitation email", e);
+    }
     }
 
     @Override
