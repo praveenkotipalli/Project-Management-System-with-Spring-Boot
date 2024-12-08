@@ -44,6 +44,7 @@ public class AppConfig {
             public CorsConfiguration getCorsConfiguration(HttpServletRequest request){
                 CorsConfiguration cfg = new CorsConfiguration();
                 cfg.setAllowedOrigins(Arrays.asList(
+                    "https://project-management-system-frontend-livid.vercel.app",
                     "http://localhost:3000",
                     "http://localhost:5172",
                     "http://localhost:5173",
