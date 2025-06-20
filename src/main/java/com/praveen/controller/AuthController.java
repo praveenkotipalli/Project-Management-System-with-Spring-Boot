@@ -27,7 +27,7 @@ import com.praveen.service.SubscriptionService;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://project-management-system-frontend-livid.vercel.app")
 public class AuthController {
     @Autowired
     private UserRepository userRepository;

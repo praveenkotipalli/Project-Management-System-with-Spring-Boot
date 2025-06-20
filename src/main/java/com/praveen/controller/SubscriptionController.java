@@ -3,6 +3,7 @@ package com.praveen.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -18,6 +19,7 @@ import com.praveen.service.UserService;
 
 @RestController
 @RequestMapping("/api/subscriptions")
+@CrossOrigin(origins = "https://project-management-system-frontend-livid.vercel.app")
 public class SubscriptionController {
     
     @Autowired

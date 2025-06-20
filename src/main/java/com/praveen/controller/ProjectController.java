@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 // import org.springframework.security.access.method.P;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ import com.praveen.service.UserService;
 
 @RestController
 @RequestMapping("/api/projects")
+@CrossOrigin(origins = "https://project-management-system-frontend-livid.vercel.app")
 public class ProjectController {
 
     @Autowired
@@ -148,8 +150,8 @@ public class ProjectController {
     @GetMapping("/accept_invitation")
     public ResponseEntity<Invitation>acceptInviteProject(
         @RequestParam String token,
-        @RequestHeader("Authorization") String jwt,
-        @RequestBody Project project
+        @RequestHeader("Authorization") String jwt
+        // @RequestBody Project project
     )throws Exception{
 
         User user = userService.findUserProfileByJwt(jwt);

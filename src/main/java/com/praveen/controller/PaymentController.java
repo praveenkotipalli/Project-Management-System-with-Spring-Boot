@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -20,6 +21,7 @@ import com.razorpay.RazorpayClient;
 
 @RestController
 @RequestMapping("/api/payments")
+@CrossOrigin(origins = "https://project-management-system-frontend-livid.vercel.app")
 public class PaymentController {
 
     @Autowired
